@@ -1,13 +1,18 @@
 #include "oclint/Options.h"
 
 #include <unistd.h>
-
+ 
+// ${llvm-project}/llvm/include/llvm/Option/OptTable.h
 #include <llvm/Option/OptTable.h>
 #include <llvm/Option/Option.h>
+
+// ${llvm-project}/llvm/include/llvm/Support/CommandLine.h
 #include <llvm/Support/CommandLine.h>
 #include <llvm/Support/FileSystem.h>
 #include <llvm/Support/Path.h>
 #include <llvm/Support/Program.h>
+
+// 
 #include <clang/Driver/Options.h>
 #include <clang/Tooling/CommonOptionsParser.h>
 
