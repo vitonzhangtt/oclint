@@ -1,6 +1,7 @@
 #ifndef OCLINT_ABSTRACTASTVISITORRULE_H
 #define OCLINT_ABSTRACTASTVISITORRULE_H
 
+#include <iostream>
 #include <clang/AST/RecursiveASTVisitor.h>
 
 #include "oclint/AbstractASTRuleBase.h"
@@ -75,6 +76,10 @@ private:
 
     bool isValidDecl(clang::Decl *decl)
     {
+	// Hack the `Decl`
+	// Check that whether oclint rule will check header file in Objective-c? 
+	std::cout << "" << decl->getDeclKindName() << std::endl;
+
         clang::SourceManager *sourceManager = &_carrier->getSourceManager();
         clang::SourceLocation startLocation = decl->getBeginLoc();
         return startLocation.isValid() && sourceManager->isInMainFile(startLocation);

@@ -5,3 +5,6 @@ BUILD_TEST(CocoaTests
     ObjCVerifyProtectedMethodRuleTest.cpp
     ObjCVerifySubclassMustImplementRuleTest.cpp
 )
+
+BUILD_TEST(ObjCVerifyPropertyIsNotAssignForReferenceTypeRuleTest
+ObjCVerifyPropertyIsNotAssignForReferenceTypeRuleTest.cpp)

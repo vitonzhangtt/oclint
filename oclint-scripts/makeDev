@@ -1,0 +1,4 @@
+#! /bin/sh -e
+
+# This script is just for development. 
+./ci -release "$@"

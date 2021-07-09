@@ -21,6 +21,9 @@ def setup_prebuilt_binary():
     build_path = path.build.clang_build_dir
     install_path = path.build.clang_install_dir
 
+    if check_prebuilt_binary(build_path, install_path):
+        return
+
     if environment.is_darwin():
         binary_url = path.url.clang_prebuilt_binary_for_macos
     elif environment.is_aarch64():
@@ -36,6 +39,15 @@ def setup_prebuilt_binary():
     process.call('tar xf prebuilt.tar.xz -C ' + install_path + ' --strip-components=1')
     path.cd(current_dir)
 
+def check_prebuilt_binary(build_path, install_path):
+    if os.path.exists(build_path) and os.path.exists(install_path):
+        hint = """[ALERT] LLVM build path and install path are already existed! 
+        So the download for LLVM prebuilt binary is skipped.
+        You could force the download of the LLVM prebuilt binary with option `-clean`."""
+        print(hint)
+        return True
+    else:
+        return False
 
 if args.clean:
     clean_module()
